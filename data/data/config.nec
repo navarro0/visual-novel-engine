@@ -1,0 +1,89 @@
+#######################
+## CONFIGURATION     ##
+#######################
+## TEXT PARAMETERS   ##
+#######################
+font_antialias:      1
+button_font:         default
+button_foreground:   155, 155, 155
+button_hover:        255, 255, 255
+button_shadow:       0, 0, 0
+text_font:           default
+text_foreground:     255, 255, 255
+backlog_foreground:  155, 155, 155
+text_shadow:         0, 0, 0
+textbox_padding:     8
+choice_padding:      8
+text_fontsize:       24
+button_fontsize_1:   22
+button_fontsize_2:   28
+button_fontsize_3:   20
+widget_fontsize:     32
+savebox_fontsize:    28
+
+#######################
+## GRAPHIC HANDLING  ##
+#######################
+caption:             Novel Engine
+is_fullscreen:       0
+fade_color:          0, 0, 0
+window_size:         800, 600
+logo_anchor:         150, 200
+savebox_anchor:      18, 36
+save_grid_dimension: 2, 15
+back_anchor:         300, 515
+
+#######################
+## SOUND HANDLING    ##
+#######################
+hover_sound:         None
+select_sound:        None
+title_music:         bgm_1
+volume:              0.500
+
+#######################
+## BUTTON HANDLING   ##
+#######################
+title_newgame:       New Game, 328, 400
+title_load:          Continue, 328, 430
+title_config:        Options, 328, 460
+title_quit:          Exit Game, 328, 490
+
+volume_control:      207, 222, 0.500
+sound_control:       207, 252, 0.500
+speed_control:       207, 282, 0.500
+
+volume_label:        BGM Volume
+sound_label:         SFX Volume
+speed_label:         Text Speed
+
+volume_label_anchor: 63, 212
+sound_label_anchor:  63, 242
+speed_label_anchor:  63, 272
+
+demo_text_anchor:    63, 322
+demo_text:           This is how fast text will be rendered.
+
+fullscreen:          Fullscreen, 63, 360
+window:              Windowed, 213, 360
+save_config:         Save Changes, 363, 360
+
+ingame_save:         Save, 10, 570
+ingame_load:         Load, 66, 570
+ingame_return:       Title, 676, 570
+ingame_quit:         Quit, 732, 570
+ingame_back:         Back, 122, 570
+ingame_next:         Next, 178, 570
+ingame_skip:         Skip, 234, 570
+ingame_auto:         Auto, 290, 570
+
+#######################
+## GUI HANDLING      ##
+#######################
+textbox_anchor:      0, 400
+widget_anchor:       0, 0
+
+#######################
+## INITIAL SCRIPT    ##
+#######################
+root_scene:          000

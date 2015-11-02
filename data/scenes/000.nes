@@ -1,0 +1,144 @@
+#J-Engine script: 000.jns
+#This is a demo scene using the default resources provided
+
+.music(bgm_2)               #Play the background music
+.hide                       #Hide the textbox and buttons
+.load(miyako, 0)            #Load all images from data/images/char/miyako/
+.widget(Saturday, center)   #Create a text widget labeled "Saturday"
+.setanchor(center)          #Set the zoom anchor position
+
+#Load data/images/location/veranda.png as the background
+#Zoom starts at 2x scale, ends at 1x scale at 1% rate
+.scenein(location, veranda, fadezoomout, 2.0, 1.0, 0.01)
+.show                       #Show the textbox and buttons again
+
+#Create an instance of dialogue
+#char = 0: using miyako's image bank
+#sub  = 4: displaying image 4 from the bank
+#pos  = 8: centered horizontally on-screen
+#name = Miyako: using name "Miyako"
+
+.text(char = 0, sub = 4, pos = 8, name = Miyako)
+	"Hello! Welcome to the Novel Engine!"
+.text
+
+#If char, sub, or pos are omitted, previous image remains
+.text(name = Miyako)
+	"What you're looking at is a demo scene that will
+	run through all the functions of the engine."
+.text
+
+.text(char = 0, sub = 3, pos = 8, name = Miyako)
+	"I'm going to wait for three seconds now. Please
+	open this scene in a text editor to follow along."
+.text
+
+.hide                                  #Hide the textbox and buttons
+.setfade(3)                            #Set the fade rate to 3
+.load(-1)                              #Fade out all character images
+.sceneout(fadezoomin, 1.0, 2.0, 0.005) #Fade out and zoom into scene
+.wait(180)                             #Wait for 180 frames
+.scenein(location, veranda, fade)      #Simple fade in scene
+.show                                  #Show the textbox and buttons
+
+.text(char = 0, sub = 0, pos = 8, name = Miyako)
+	"All right, did you open up a text editor?"
+.text
+
+#Create a set of three branching choices
+#Each choice associates with a number indicator
+.choice
+	1:Of course I did!
+	2:Not yet...
+	3:I don't want to.
+.choice
+
+.branch 1: #Jump here if choice 1 was chosen
+    .text(char = 0, sub = 3, pos = 8, name = Miyako)
+		"That's great! Now let's continue!"
+    .text
+
+	.text(char = 0, sub = 0, pos = 8, name = Miyako)
+		"I'm going to set the variable $xy to equal 5."
+	.text
+
+	#There are 676 variables, ranging from $aa to $zz
+	$xy = 5    #Set variable $xy to 5
+.branch
+
+.branch 2: #Jump here if choice 2 was chosen
+	.text(char = 0, sub = 0, pos = 8, name = Miyako)
+		"Oh, okay... Well, in that case, take your time!"
+	.text
+
+	.text(char = 0, sub = 0, pos = 8, name = Miyako)
+		"I'm going to set the variable $xy to equal 10."
+	.text
+
+	$xy = 10   #Set variable $xy to 10
+.branch
+
+.branch 3: #Jump here if choice 3 was chosen
+	.text(char = 0, sub = 2, pos = 8, name = Miyako)
+		"Oh, I see... Well, there's nothing wrong with that!"
+	.text
+
+	.text(char = 0, sub = 0, pos = 8, name = Miyako)
+		"I'm going to set the variable $xy to equal 20."
+	.text
+
+	$xy = 20   #Set variable $xy to 20
+.branch
+
+.text(char = 0, sub = 3, pos = 8, name = Miyako)
+	"Now, what did I set the variable to?"
+.text
+
+.choice
+	1:5
+	2:10
+	3:20
+.choice
+
+#Here, we set $ab as a comparator. By doing this, we can
+#simply call a single if-statement to tell whether or not
+#the player's answer was correct.
+
+#An alternative and equally-sound approach would be to
+#call separate if-statements within each branch.
+.branch 1:
+	$ab = 5
+.branch
+
+.branch 2:
+	$ab = 10
+.branch
+
+.branch 3:
+	$ab = 20
+.branch
+
+#Compare the value of $xy to the value of $ab
+.if $xy == $ab: #If they're equal...
+    .text(char = 0, sub = 4, pos = 8, name = Miyako)
+        "That's correct! Good job!"
+    .text
+.if
+
+.if $xy != $ab: #If they're not equal...
+	.text(char = 0, sub = 4, pos = 8, name = Miyako)
+		"Sorry! That's incorrect!"
+	.text
+.if
+
+.text(char = 0, sub = 0, pos = 8, name = Miyako)
+	"Well, that's all for today. I hope you learned
+	a little something from this demo!"
+.text
+
+#Fade out everything and return to title
+.setfade(3)     #Set the fade rate to 3
+.hide           #Hide the textbox and buttons
+.load(0)        #Clear the only character
+.sceneout(fade) #Fade out the scene
+.forcequit      #Exit to title
